@@ -1,0 +1,77 @@
+<div class="row">
+    <div class="col-12">
+        @if(isLoading) {
+            <div class="w-100 d-flex justify-content-center align-items-center">
+                <div class="spinner-border" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        }
+        @else if(!!band && !!form) {
+            <h1 class="mb-5">Édition du groupe #{{ band.id }} - {{ band.name }}</h1>
+
+            <form [formGroup]="form" (ngSubmit)="onFormSubmitted()">
+                <div class="row mb-3">
+                    <div class="col">
+                        <label for="name" class="form-label">Nom</label>
+                        <input formControlName="name" type="text" class="form-control" id="name" name="name">
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col">
+                        <label for="country" class="form-label">Pays</label>
+                        <input formControlName="country" type="text" class="form-control" id="country" name="country">
+                    </div>
+
+                    <div class="col">
+                        <label for="city" class="form-label">Ville</label>
+                        <input formControlName="city" type="text" class="form-control" id="city" name="city">
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col">
+                        <label for="startingYear" class="form-label">Début</label>
+                        <input formControlName="startingYear" type="number" min="1900" max="2024" class="form-control" id="startingYear" name="startingYear">
+                    </div>
+
+                    <div class="col">
+                        <label for="separationYear" class="form-label">Séparation</label>
+                        <input formControlName="separationYear" type="number" min="1900" max="2024" class="form-control" id="separationYear" name="separationYear">
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col">
+                        <label for="founders" class="form-label">Fondateurs</label>
+                        <input formControlName="founders" type="text" class="form-control" id="founders" name="founders">
+                    </div>
+
+                    <div class="col">
+                        <label for="membersCount" class="form-label">Membres</label>
+                        <input formControlName="membersCount" type="number" min="1" class="form-control" id="membersCount" name="membersCount">
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col">
+                        <label for="musicalStyle" class="form-label">Style musical</label>
+                        <input formControlName="musicalStyle" type="text" class="form-control" id="musicalStyle" name="musicalStyle">
+                    </div>
+
+                    <div class="col">
+                        <label for="description" class="form-label">Description</label>
+                        <textarea formControlName="description" class="form-control" id="description" name="description"></textarea>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col justify-self-end">
+                        <button type="submit" class="btn btn-primary">Enregistrer</button>
+                    </div>
+                </div>
+            </form>
+        }
+    </div>
+</div>

@@ -1,0 +1,43 @@
+App\Entity\Band:
+    exclusion_policy: all
+    properties:
+        id:
+            expose: true
+            groups:
+                - 'read:band'
+        name:
+            expose: true
+            groups:
+                - 'read:band'
+        country:
+            expose: true
+            groups:
+                - 'read:band'
+        city:
+            expose: true
+            groups:
+                - 'read:band'
+        startingYear:
+            expose: true
+            groups:
+                - 'read:band'
+        separationYear:
+            expose: true
+            groups:
+                - 'read:band'
+        founders:
+            expose: true
+            groups:
+                - 'read:band'
+        membersCount:
+            expose: true
+            groups:
+                - 'read:band'
+        musicalStyle:
+            expose: true
+            groups:
+                - 'read:band'
+        description:
+            expose: true
+            groups:
+                - 'read:band'

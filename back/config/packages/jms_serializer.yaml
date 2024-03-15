@@ -1,0 +1,35 @@
+jms_serializer:
+    metadata:
+        auto_detection: false
+        directories:
+            entity:
+                namespace_prefix: "App\\Entity"
+                path: "%kernel.project_dir%/config/serializer/entity"
+
+    property_naming:
+        id: jms_serializer.identical_property_naming_strategy
+
+    default_context:
+        serialization:
+            serialize_null: true
+            enable_max_depth_checks: true
+        deserialization:
+            serialize_null: true
+            enable_max_depth_checks: true
+
+when@prod:
+    jms_serializer:
+        visitors:
+            json_serialization:
+                options:
+                    - JSON_UNESCAPED_SLASHES
+                    - JSON_PRESERVE_ZERO_FRACTION
+
+when@dev:
+    jms_serializer:
+        visitors:
+            json_serialization:
+                options:
+                    - JSON_PRETTY_PRINT
+                    - JSON_UNESCAPED_SLASHES
+                    - JSON_PRESERVE_ZERO_FRACTION

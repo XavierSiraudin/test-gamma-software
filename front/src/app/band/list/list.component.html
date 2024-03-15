@@ -1,0 +1,59 @@
+<div class="row">
+    <div class="col">
+        @if(isLoading) {
+            <div class="w-100 d-flex justify-content-center align-items-center">
+                <div class="spinner-border" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        }
+        @else {
+            <h1 class="mb-3">Liste des groupes</h1>
+
+            <div class="row mb-3">
+                <div class="col-3">
+                    <label for="file" class="form-label">Importer un fichier</label>
+                    <input (change)="onFileChanged($event)" class="form-control" type="file" id="file" name="file">
+                </div>
+            </div>
+
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Pays</th>
+                    <th scope="col">Ville</th>
+                    <th scope="col">Début</th>
+                    <th scope="col">Séparation</th>
+                    <th scope="col">Fondateurs</th>
+                    <th scope="col">Membres</th>
+                    <th scope="col">Style</th>
+                    <th scope="col">Description</th>
+                    <th scope="col"></th>
+                </tr>
+                </thead>
+                <tbody>
+                    @for(band of bands; track band.id) {
+                        <tr>
+                            <th scope="row">{{ band.id }}</th>
+                            <td>{{ band.name }}</td>
+                            <td>{{ band.country }}</td>
+                            <td>{{ band.city }}</td>
+                            <td>{{ band.startingYear }}</td>
+                            <td>{{ band.separationYear }}</td>
+                            <td>{{ band.founders }}</td>
+                            <td>{{ band.membersCount }}</td>
+                            <td>{{ band.musicalStyle }}</td>
+                            <td>{{ band.description }}</td>
+                            <td>
+                                <a [routerLink]="'' + band.id" class="btn btn-primary btn-sm"><i class="bi bi-pen"></i></a>
+                                <button (click)="onRemoveBandClicked(band.id)" type="button" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+</div>
